@@ -10,6 +10,10 @@ To re-build or extend/develop the coding standards documents:
     conda install pip
     pip install mkdocs-material
 
+## Publishing
+
+    mkdocs gh-deploy --force
+
 ## Welcome to MkDocs
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
