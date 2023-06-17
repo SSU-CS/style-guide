@@ -27,6 +27,15 @@ Doxygen relies upon the software package [graphviz](https://graphviz.org/) for g
 
     Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.
 
+Example configuration files to create Doxygen-generated documentation are included for every sample project with this style guide. If you like, you can checkout the repository and re-build its documentation to experiment.
+
+| Sample Project | Using Doxygen | Using Doxygen + dot |
+|----------------|:------------------:|:------------------------:|
+| [`directory/`](https://github.com/SSU-CS/style-guide/tree/main/directory) | [:material-web:HTML](/directory-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/directory-docs/simple/latex/refman.pdf) | [:material-web:HTML](/directory-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](/directory-docs/graphics/latex/refman.pdf) |
+| [`fibonacci/`](https://github.com/SSU-CS/style-guide/tree/main/fibonacci) | [:material-web:HTML](/fibonacci-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/fibonacci-docs/simple/latex/refman.pdf) | [:material-web:HTML](/fibonacci-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](/fibonacci-docs/graphics/latex/refman.pdf) |
+| [`sort-comparisons/`](https://github.com/SSU-CS/style-guide/tree/main/sort-comparisons) | [:material-web:HTML](/sort-comparisons-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/sort-comparisons-docs/simple/latex/refman.pdf) | [:material-web:HTML](/sort-comparisons-docs/graphics/html) &nbsp;  [:fontawesome-regular-file-pdf:PDF](/sort-comparisons-docs/graphics/latex/refman.pdf)  |
+ 
+ 
 
 ## Whitespace
 These conventions are intended for any code that will be read on a screen or printed on paper.
