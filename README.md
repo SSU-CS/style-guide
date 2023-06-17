@@ -1,2 +1,2 @@
-# style-guide
+# ssu-style-guide
 Style Guides for use in various classes
