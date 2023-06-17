@@ -2,15 +2,18 @@
 
 The style guide itself is written with the [mkdocs-material](https://jamstackthemes.dev/demo/theme/mkdocs-material/) theme for MkDocs.
 
-## Development
-To re-build or extend/develop the coding standards documents:
+## Conda Environment
 
     conda create --name mkdocs-material
     conda activate mkdocs-material
     conda install pip
     pip install mkdocs-material
 
-## Publishing
+## Development
+
+    mkdocs serve
+
+## Publish
 
     mkdocs gh-deploy --force
 
