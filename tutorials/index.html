@@ -1,0 +1,616 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cpp/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Tutorials - SSU Coding Style Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SSU Coding Style Guide" class="md-header__button md-logo" aria-label="SSU Coding Style Guide" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SSU Coding Style Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SSU-CS/style-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../cpp/" class="md-tabs__link">
+      SSU Style Guide for C/C++
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Tutorials
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SSU Coding Style Guide" class="md-nav__button md-logo" aria-label="SSU Coding Style Guide" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    SSU Coding Style Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SSU-CS/style-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cpp/" class="md-nav__link">
+        SSU Style Guide for C/C++
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tutorials
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-doxygen-with-graphviz" class="md-nav__link">
+    Using Doxygen with graphviz
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Doxygen with graphviz">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-steps-for-using-doxygen-with-graphviz" class="md-nav__link">
+    Basic Steps for Using Doxygen with graphviz
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-source-code" class="md-nav__link">
+    1. Prepare the Source Code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-run-doxygen" class="md-nav__link">
+    2. Run Doxygen
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generate-a-pdf-file" class="md-nav__link">
+    3. Generate a pdf file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-generate-graphics" class="md-nav__link">
+    4. Generate graphics
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Generate graphics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specify-the-location-of-the-dot-utility" class="md-nav__link">
+    Specify the location of the dot utility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tutorials">Tutorials</h1>
+<h2 id="using-doxygen-with-graphviz">Using Doxygen with graphviz</h2>
+<p>This tutorial provides streamlined instructions to create both html and LaTeX documentation for a basic C or C++ program or package. Thus, this page should be considered a guide to get started with Doxygen. Beyond these instructions, the Doxygen software system provides numerous features for generating software software that allow considerable tailoring of input and output. Overall, learning all options can require much time and effort, but this document can help you get started.</p>
+<h3 id="basic-steps-for-using-doxygen-with-graphviz">Basic Steps for Using Doxygen with graphviz</h3>
+<p>Typically, production of basic documentation with Doxygen follows four steps:</p>
+<ol>
+<li>Prepare the C/C++ source code with comments holding annotations and documentation;</li>
+<li>Run Doxygen using the C/C++ files as inputs, producing <code>.html</code> and/or <code>.tex</code> files as outputs;</li>
+<li>Generate a pdf file by running LaTeX on the <code>.tex</code> files;</li>
+<li>Generate graphics for calling diagrams, class hierarchies, and file dependencies.</li>
+</ol>
+<h3 id="1-prepare-the-source-code">1. Prepare the Source Code</h3>
+<p>As you write your C/C++ code, follow the <a href="../cpp">SSU Style Guide</a>, especially:</p>
+<ul>
+<li>
+<p>Use the file extension <code>.h</code> for header files, <code>.c</code> for C code, <code>.cpp</code> for C++ code, and <code>.tcc</code> for C++ template files</p>
+</li>
+<li>
+<p>Doxygen annotations employ a special comment convention: use <code>/**</code>, followed by whitespace, at the start of a comment preceding a function, and use <code>*/</code> at the end of the comment.</p>
+</li>
+<li>
+<p>Within a Doxygen comment (starting with <code>/**</code>), use:</p>
+<ul>
+<li><code>@param</code> to identify function parameters</li>
+<li><code>@pre</code> so happy to see all of for pre-conditions</li>
+<li><code>@returns</code> to describe what a function returns.</li>
+<li><code>@remark</code> to begin a note that should begin on a line by itself.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The annotations listed above likely are adequate to get started, although <a href="https://www.doxygen.nl/manual/docblocks.html">the Doxygen Manual on "Documenting the code"</a> describes many more details that can further improve the generated documentation.</p>
+</div>
+</li>
+<li>
+<p>To simplify working with Doxygen, copy all the annotated project files into a separate directory. That directory, which we will refer to as the <em>working directory</em>, should contain the <code>.h</code>, <code>.c</code>, <code>.cpp</code> and <code>.tcc</code> files for the software package, but no other files (e.g., no files for other projects).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be sure the working directory holds the actual files, since Doxygen may lose some functionality with symbolic links.</p>
+</div>
+</li>
+</ul>
+<h3 id="2-run-doxygen">2. Run Doxygen</h3>
+<p>Doxygen can be run from the command-line or using a GUI. This tutorial is written relative to the Doxygen GUI front-end on Mac OS X. Start Doxygen by double-clicking the Doxygen.app in the Applications directory. Then, note several elements of the first screen when Doxygen opens its graphical interface:</p>
+<ul>
+<li>The top line contains a space to identify a "working directory"</li>
+<li>The left panel contains links for "Project", "Mode", "Output", and "Diagrams"</li>
+<li>The right panel has titles "Wizard", "Expert", and "Run", together with several lines to be completed</li>
+</ul>
+<p>The next steps in these instructions go through these elements step-by-step.</p>
+<ol>
+<li>
+<p>Complete the first page on "Project" page in Doxygen's Wizard:</p>
+<ul>
+<li>The first line on the "Project" page asks, "Specify the working directory from which doxygen will run". Use the "Select" button to navigate to the Working Directory containing the program(s) for this project.</li>
+<li>The first blanks on the right ask for the "Project Name" and "Project synopsis". These two lines will form the title and opening description of the documentation to be produced.</li>
+<li>The Project version and logo are optional fields--fill in these blanks or not (as you wish).</li>
+<li>Although Doxygen allows flexibility in the location of the source code and the placement of the document, in basic programming the "working directory" can be used for both the "Source code directory" and the "Destination directory". (If not set explicitly, these may default to the "working directory".)</li>
+<li>Once these fields for the "Project" screen are completed, use the "next" button to continue.</li>
+</ul>
+</li>
+<li>
+<p>Doxygen's next page clarifies the "Mode" for generating document.</p>
+<ul>
+<li>In the top section, the default, "Documented entities only", often can be used; However, if the resulting documentation does not show function information, change this setting to "All Entries"!</li>
+<li>In the bottom section, check the optimization option for the language used in your program(s) (either C++ or C/PHP).</li>
+<li>Once these fields for the "Mode" screen are completed, use the "next" button to continue.</li>
+</ul>
+</li>
+<li>
+<p>The next page identifies the type of output desired.</p>
+<ul>
+<li>Typically, the defaults for both "plain HTML" and "LaTeX" can be accepted.</li>
+<li>After specifying the "Output" screen, click "next" to continue.</li>
+</ul>
+</li>
+<li>
+<p>The next page may identify the type of "diagrams to generate", although doxygen sometimes may skip this step.</p>
+<ul>
+<li>Typically, the defaults can be accepted.</li>
+<li>After specifying the "Diagrams" screen, click "next" to continue.</li>
+</ul>
+</li>
+<li>
+<p>The "Run" screen appears next.</p>
+<ul>
+<li>
+<p>Click "Run doxygen". Doxygen will print progress notifications in the designated box.</p>
+<ul>
+<li>If the "run doxygen" button is grayed out, use the "File" at the top of the screen, and use the "save as" option to save a file called "Doxygen" to the working directory.</li>
+<li>If the "run doxygen" button is active, click it, and review the progress box. If you find an "Error" that a configuration file was not found, run doxygen again.</li>
+</ul>
+</li>
+<li>
+<p>When complete, a note, "***Doxygen has finished" appears. When no errors appear in the progress box (and many lines appear saying "Generating ..."), the documentation has been produced</p>
+<ul>
+<li>Check your working directory for the <code>html/</code> and <code>latex/</code> directories. </li>
+<li>Opening <code>html/index.html</code> in a browser should display the program documentation.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-generate-a-pdf-file">3. Generate a pdf file</h3>
+<p>The LaTeX documentation system is a widely-used package designed for mathematical typesetting. Doxygen normally generates a <code>latex/</code> directory that contains numerous files in LaTeX format. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These instructions assume that you have the LaTeX utilities already installed. If not, several free versions are available. Try a Web search for "LaTeX" and your type of computer. For example, "latex Mac OS X" should identify the TexShop package which is widely available at no cost.</p>
+</div>
+<p>In a terminal window, go the <code>latex/</code> directory, and check the file <code>refman.tex</code> is present. You can generate the <code>refman.pdf</code> using the command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make
+</span></code></pre></div>
+<p>The document <code>refman.pdf</code> should contain the full project documentation as a single, multi-page <em>reference manual</em>.</p>
+<h3 id="4-generate-graphics">4. Generate graphics</h3>
+<p>One step of the Doxygen wizard involves Diagrams. This allows you to generate graphics for calling diagrams, class hierarchies, and file dependencies</p>
+<p>Within the "Diagrams" section of the Doxygen wizard:</p>
+<ul>
+<li>Click the option for "Use Dot tool from the GraphViz package Dot graphs to generate". This will selected several graph options.</li>
+<li>In addition, click the options "Call graphs" and "Called by graphs".</li>
+</ul>
+<p>At this point, all graphical options will be set. With this option, moving to the "Run" tab allows one to click "Run doxygen" as before.</p>
+<ul>
+<li>If this process runs smoothly, with no error reported, then the full documentation is ready, and nothing more need be done.</li>
+<li>If "Run doxygen" generates an error like "dot not found", the underlying issue often is that doxygen cannot find the graphviz package (even if graphviz is installed). This issue is resolved by configuring Doxygen to specify the location of the <code>dot</code> utility (see below).</li>
+</ul>
+<h4 id="specify-the-location-of-the-dot-utility">Specify the location of the <code>dot</code> utility</h4>
+<ul>
+<li>
+<p>Within Doxygen, move to the "File" option at the top of the page and select "Save". This saves a configuration in the working directory for project.</p>
+</li>
+<li>
+<p>Within a terminal window, use the following command to determine where the "dot" program is located:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>whereis dot
+</span></code></pre></div>
+<p>(On my machine, this is <code>/usr/local/bin/dot</code> but another possibility might be <code>/usr/bin/dot</code>, etc. If no path is returned, you may need to reinstall graphviz!</p>
+</li>
+<li>
+<p>Use an editor to open that Doxygen file and search for the line</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>DOT_PATH   =
+</span></code></pre></div>
+Then, insert the path where <code>dot</code> was located, such as</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>DOT_PATH               = /usr/local/bin/dot
+</span></code></pre></div>
+</li>
+<li>
+<p>Also, check that HAVE_DOT is set to YES:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>HAVE_DOT               = YES
+</span></code></pre></div>
+</li>
+<li>
+<p>After saving the edited file, go back to the file menu of Doxygen, and open the Doxygen file that has just been edited.</p>
+</li>
+<li>
+<p>With this editing complete, try running Doxygen again on your project. With luck, all will proceed smoothly.</p>
+</li>
+</ul>
+<h3 id="further-reading">Further Reading</h3>
+<ul>
+<li><a href="https://www.doxygen.nl/index.html">Doxygen home page</a></li>
+<li><a href="https://www.doxygen.nl/manual/index.html">Overview of the Doxygen Manual</a></li>
+<li><a href="https://www.doxygen.nl/manual/commands.html#cmdmainpage">Special Commands in Doxygen</a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1315 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../tutorials/">
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>SSU Style Guide for C/C++ - SSU Coding Style Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cc-style-guide-for-ssu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SSU Coding Style Guide" class="md-header__button md-logo" aria-label="SSU Coding Style Guide" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SSU Coding Style Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SSU Style Guide for C/C++
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SSU-CS/style-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      SSU Style Guide for C/C++
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../tutorials/" class="md-tabs__link">
+      Tutorials
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SSU Coding Style Guide" class="md-nav__button md-logo" aria-label="SSU Coding Style Guide" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    SSU Coding Style Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SSU-CS/style-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SSU Style Guide for C/C++
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SSU Style Guide for C/C++
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    Purpose
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alignment-with-doxygen" class="md-nav__link">
+    Alignment with Doxygen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whitespace" class="md-nav__link">
+    Whitespace
+  </a>
+  
+    <nav class="md-nav" aria-label="Whitespace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#line-length" class="md-nav__link">
+    Line Length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-spaces-for-indentation" class="md-nav__link">
+    Use spaces for indentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-curly-braces-consistently" class="md-nav__link">
+    Use curly braces consistently
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-curly-braces-around-all-blocks" class="md-nav__link">
+    Use curly braces around all blocks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-statement-per-line" class="md-nav__link">
+    One statement per line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-whitespace-to-separate-chunks-of-code" class="md-nav__link">
+    Vertical whitespace to separate chunks of code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-spaces-around-operators" class="md-nav__link">
+    Use spaces around operators
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-standards" class="md-nav__link">
+    Printing standards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    Naming Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="Naming Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-descriptive-names" class="md-nav__link">
+    Use descriptive names
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-more-descriptive-names-for-larger-scopes" class="md-nav__link">
+    Use more descriptive names for larger scopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-variables-and-methods" class="md-nav__link">
+    Naming variables and methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-classes" class="md-nav__link">
+    Naming classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-constant-and-enum-values" class="md-nav__link">
+    Naming constant and enum values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-files" class="md-nav__link">
+    Naming files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    Comments
+  </a>
+  
+    <nav class="md-nav" aria-label="Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#do-not-over-comment-code" class="md-nav__link">
+    Do not over-comment code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comments-describe-purpose-over-implementation" class="md-nav__link">
+    Comments describe purpose over implementation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include-a-program-header" class="md-nav__link">
+    Include a program header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedures-should-be-commented" class="md-nav__link">
+    Procedures should be commented
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic-within-procedures-should-be-commented" class="md-nav__link">
+    Logic within procedures should be commented
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-blocks-should-be-commented" class="md-nav__link">
+    Control blocks should be commented
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-dead-code" class="md-nav__link">
+    No dead code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reuse-code-and-efficiency" class="md-nav__link">
+    Reuse code and efficiency
+  </a>
+  
+    <nav class="md-nav" aria-label="Reuse code and efficiency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-library-functions-when-possible" class="md-nav__link">
+    Use library functions, when possible
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-redundant-computation" class="md-nav__link">
+    Avoid redundant computation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-redundant-or-verbose-expressions" class="md-nav__link">
+    Avoid redundant or verbose expressions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organization" class="md-nav__link">
+    Organization
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-implementation-organization" class="md-nav__link">
+    Class implementation organization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decompose-logic-into-unique-specific-tasks" class="md-nav__link">
+    Decompose logic into unique, specific tasks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-extension-should-always-represent-is-a-relationships" class="md-nav__link">
+    Class extension should always represent "is-a" relationships
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-examples-with-annotations" class="md-nav__link">
+    More Examples, with Annotations
+  </a>
+  
+    <nav class="md-nav" aria-label="More Examples, with Annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-header" class="md-nav__link">
+    Example: header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-function" class="md-nav__link">
+    Example: function
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-main" class="md-nav__link">
+    Example: main()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgments" class="md-nav__link">
+    Acknowledgments
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cc-style-guide-for-ssu">C/C++ Style Guide for SSU</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The style guidelines identified in this document represent the default standards for C/C++ programs that are written for courses within the Department of Computer Science at Sonoma State University.</p>
+<h3 id="purpose">Purpose</h3>
+<p>Computer programs convey proposed solutions to problems and have at least three audiences:</p>
+<ul>
+<li>The original programmer, or the programmer's team, who are developing, debugging, or refining a solution.</li>
+<li>Other programmers who may wish to understand, review, modify, or expand a program.</li>
+<li>The compiler which will translate the program to machine language for subsequent machine execution.</li>
+</ul>
+<p>As a vital mechanism for effective communication, programs must convey solutions clearly and concisely, and programs must be easily readable by a broad audience: a programmer, the programmer's team, and future programmers who may need to study, correct, or maintain the code. Google identifies further "Background" and "Goals of the Style Sheet" at the beginning of <a href="https://google.github.io/styleguide/cppguide.html">Google's C++ Style Guide</a>.</p>
+<p>Although the C/C++ Programming Language allows programmers to utilize a wide range of formatting conventions, the programming culture for both C/C++ and Java largely has settled upon several widely-adopted conventions. Although some style elements vary somewhat from one organization to another, several central elements are identified and will form the style manual for use within computer science courses at Sonoma State University (unless otherwise stated by the instructor of a specific course).</p>
+<h3 id="alignment-with-doxygen">Alignment with Doxygen</h3>
+<p><a href="https://www.doxygen.nl/index.html">Doxygen</a> allows the automatic generation of html and Latex documentation directly from the annotations in C/C++ programs. Many elements in this style guide are compatible with and conformant to Doxygen's code annotations. </p>
+<p>Individual faculty may or may not require programs to conform to all of Doxygen's conventions. If faculty require code submissions to be fully conformant with Doxygen annotations, they may require source code and/or documentation files to be submitted as artifacts.</p>
+<p>Doxygen relies upon the software package <a href="https://graphviz.org/">graphviz</a> for generating images for calling diagrams, class diagrams, and file dependencies. See the <a href="../tutorials">Tutorial: Using Doxygen with graphviz</a> for resources.</p>
+<div class="admonition quote">
+<p class="admonition-title">Doxygen</p>
+<p>Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.</p>
+</div>
+<h2 id="whitespace">Whitespace</h2>
+<p>These conventions are intended for any code that will be read on a screen or printed on paper.</p>
+<h3 id="line-length">Line Length</h3>
+<p>Ensure that no line of code is longer than 80 characters. </p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>The 80 character rule is a common <a href="https://en.wikipedia.org/wiki/Characters_per_line">line limit in C/C++ style guides</a>. While technological constraints originating the rule (punchcard length and dumb terminal width) may no longer be relevant, this standard re-affirms its reasonableness as a limit.</p>
+</details>
+<h3 id="use-spaces-for-indentation">Use spaces for indentation</h3>
+<p>Any block of code enclosed in curly braces should be indented one level deeper than the surrounding code. </p>
+<ul>
+<li>Choose a reasonable and consistent convention for indentation; generally 3--5 spaces is acceptable. We recommend 3 spaces for indentation.</li>
+<li>Although a programmer may choose indenting between 3 and 5 characters within a block, all indenting must be consistent throughout the code. Thus, if indentation within an <code>if</code> block is 4 spaces in one instance, then all blocks (<code>if</code>, <code>while</code>, functions, etc) should also be indented 4 spaces.</li>
+<li>Do not indent with tab characters (<code>\t</code>).  Tab stop settings vary from one environment to another.</li>
+</ul>
+<details class="tip" open="open">
+<summary>Tip: Adjust the tab settings of your editor</summary>
+<p>Set the "Tab policy" of your editor for all projects.</p>
+<ul>
+<li>For Eclipse: see <a href="http://stackoverflow.com/questions/407929/how-do-i-change-eclipse-to-use-spaces-instead-of-tabs">"Spaces only" option</a>".</li>
+<li>For emacs: see <a href="https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.elsx">Google's C/C++ style for c-mode</a>.</li>
+</ul>
+</details>
+<h3 id="use-curly-braces-consistently">Use curly braces consistently</h3>
+<p>Use "Egyptian"-style curly braces in your code in accordance with the C/C++ style guidelines.</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/* Egyptian braces: opening brace on same line, closing brace on own line */</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;these are Egyptian braces&quot;</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;hello, world!&quot;</span><span class="p">;</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</span></code></pre></div>
+</details>
+<h3 id="use-curly-braces-around-all-blocks">Use curly braces around all blocks</h3>
+<p>Although C/C++ permits the elision of curly braces in cases where the body if-statement or loop consists of a single statement, we require that every block (no matter the number of statements) be enclosed inside curly braces on a new line. </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// YES   YES   YES  </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Inside block&quot;</span><span class="p">;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;OK -- Not inside block!&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+</details>
+<p>It is far too easy to make programming errors of this form otherwise:</p>
+<details class="bug" open="open">
+<summary>Bug</summary>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// NO  NO  NO</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Inside block&quot;</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">   </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;BUG -- Not inside block!&quot;</span><span class="p">;</span>
+</span></code></pre></div>
+</details>
+<h3 id="one-statement-per-line">One statement per line</h3>
+<p>There should be no more than one statement (declaration, assignment, or function call) on any line of your program.</p>
+<h3 id="vertical-whitespace-to-separate-chunks-of-code">Vertical whitespace to separate chunks of code</h3>
+<p>Within a block of code, use vertical whitespace (blank lines) to separate groups of statements. This makes code more readable and clarifies which statements are logically related. Note that if you have to resort to this rule, you should consider breaking your code up into multiple functions instead.</p>
+<h3 id="use-spaces-around-operators">Use spaces around operators</h3>
+<p>Every C/C++ operator should have spaces around it (except the dot operator, e.g. method calls <code>c.foo()</code>). Use parentheses to communicate precedence. For example, <code>5 - (x + 4) * 8</code></p>
+<h3 id="printing-standards">Printing standards</h3>
+<p>These additional requirements are only relevant when printing code on paper.</p>
+<ul>
+<li>
+<p>Use only full sheets of clean white paper. Colored paper or paper with other printing on one or both sides is not appropriate.</p>
+</li>
+<li>
+<p>Use a fixed-width font of size at least 12 point size. We recommend Courier font.</p>
+</li>
+<li>
+<p>Use a dark font (e.g., black, dark blue, dark green, dark brown) on a light background (e.g., white or cream). Dark backgrounds are wasteful of ink resources, expensive to print, and sometimes streak or bleed together when printed. Thus, dark backgrounds are unacceptable.</p>
+</li>
+</ul>
+<h2 id="naming-conventions">Naming Conventions</h2>
+<h3 id="use-descriptive-names">Use descriptive names</h3>
+<p>Names should reflect their use within the context of the program. For example, <code>total</code> and <code>subTotal</code> describe the contents of the variables, while <code>foo</code> and <code>bar</code> do not.</p>
+<h3 id="use-more-descriptive-names-for-larger-scopes">Use more descriptive names for larger scopes</h3>
+<p>Variables that have greater scope should have more descriptive names. While it is often preferred to use a short name like <code>i</code> or <code>j</code> as a loop index, when the scope of an identifier increases, so should the meaningfulness of its name. For example, prefer <code>leftChild</code> over <code>l</code> for a class field.</p>
+<h3 id="naming-variables-and-methods">Naming variables and methods</h3>
+<p>All single-word names should be in lowercase.</p>
+<p>For multiple word names:</p>
+<ul>
+<li>In C/C++, use <a href="https://en.wikipedia.org/wiki/Camel_case">lowerCamelCase</a> for variable and method names, where subsequent words should be joined with their first character capitalized and should not contain underscores.</li>
+<li>In C, it is acceptable to use <a href="https://en.wikipedia.org/wiki/Snake_case">snake_case</a> for variable and method names (subsequent words are joined with underscores, in lower case). Do not mix snake_case and lowerCamelCase conventions.</li>
+</ul>
+<h3 id="naming-classes">Naming classes</h3>
+<p>Use <a href="https://en.wikipedia.org/wiki/Camel_case">UpperCamelCase</a> for class names and enum type names. Do not capitalize acronyms within camelCased names; the string "TCP socket ID" should be written <code>TcpSocketId</code> rather than <code>TCPSocketID</code>.</p>
+<h3 id="naming-constant-and-enum-values">Naming constant and enum values</h3>
+<p>Values that are constants, including final static variables and enum values, should follow <code>CAPITALIZED_WITH_UNDERSCORES</code> conventions, in which all-caps words are separated by underscore characters.</p>
+<h3 id="naming-files">Naming files</h3>
+<p>Follow common conventions for file extensions. In particular, use <code>.h</code> for header files, <code>.c</code> for C code, <code>.cpp</code> for C++ code, and <code>.tcc</code> for C++ template files. </p>
+<p>Although the C Standard does not require specific file extensions and <code>#include</code> statements require explicit inclusion of extensions within file names, numerous editors and some compilers (e.g., <code>gcc</code>) draw inferences from the extensions used.</p>
+<h2 id="comments">Comments</h2>
+<h3 id="do-not-over-comment-code">Do not over-comment code</h3>
+<p>If a piece of code is reasonably obvious to experienced C/C++ programmers, then it does not need to be commented. Be judicious; if you are unsure, it is often best not to include a redundant comment. If you feel like it is necessary to extensively comment your code, consider how to rewrite it to make it more straightforward.</p>
+<h3 id="comments-describe-purpose-over-implementation">Comments describe purpose over implementation</h3>
+<p>The code itself is a description of an implementation, so it is unnecessary to comment what the code is doing (e.g., <code>x++</code> does not need a comment like "Increment x"). Instead, describe at a high level the intended use of the piece of code, such as what task the function performs.</p>
+<h3 id="include-a-program-header">Include a program header</h3>
+<p>At the start of a program file, write comments to introduce the program. These should include:</p>
+<ul>
+<li>a description of the overall purpose of the program, such as the problem the program addresses. </li>
+<li>a listing of the programmers involved, with an <code>@author</code> annotation for each author.</li>
+<li>a list of all references from which the code (or ideas for the code) were drawn, with a <code>@remark</code> annotation.</li>
+<li>each reference should be in its own <code>@remark</code> block:</li>
+</ul>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">/**</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cm"> * @remark Uses a basic recursive approach to compute the </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cm"> *  n-th Catalan number, both with and without dynamic prog.</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="cm"> * </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="cm"> * @author Henry M. Walker</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cm"> * @author Ali K. Kooshesh</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cm"> * </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cm"> * @remark References</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="cm"> * </span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="cm"> * @remark Dynamic Programming: Anany Levitin, &quot;The Design and</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="cm"> *  and Analysis of Algorithms&quot;, Second Edition,</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="cm"> *  Chapter 8: Dynamic Programming                                    </span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="cm"> * </span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="cm"> * @remark Dynamic Programming: Anany Levitin, &quot;The Design and</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="cm"> *  and Analysis of Algorithms&quot;, Second Edition,</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="cm"> *  Section 2.5:  Example: Computing the nth Fibonacci Number          </span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="cm"> * </span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="cm"> * @remark People involved in problem/program discussions: </span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="cm"> *   - Mark Gondree</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="cm"> */</span>
+</span></code></pre></div>
+</details>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Doxygen also supports using bibliographic references in BibTex format (<code>.bib</code> files). BibTex/LaTeX details are beyond the scope of this Style Guide.</p>
+</details>
+<h3 id="procedures-should-be-commented">Procedures should be commented</h3>
+<p>All C functions, all C++ public methods, and all non-trivial C++ private methods should include comments holding documentation. Each should describe:</p>
+<ul>
+<li>the function's intended use,</li>
+<li>the function's parameters, using a <code>@param</code> tag for each function/method parameter,</li>
+<li>the function's return value, using a <code>@returns</code> tag (if applicable), </li>
+<li>exceptions thrown (if any), and</li>
+<li>any pre-conditions using a <code>@pre</code> tag.</li>
+</ul>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/**
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> * merge sort helper function
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> * 
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a> * @param   initArr   the array to be sorted
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a> * @param   n         the size of the array
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a> * @post    the first n elements of the array are sorted in non-descending order
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a> * @returns  zero on success, non-zero on error
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a> **/
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>int mergeSort (int initArr [ ], int n) {
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>   // to be implemented 
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>}
+</span></code></pre></div>
+</details>
+<h3 id="logic-within-procedures-should-be-commented">Logic within procedures should be commented</h3>
+<p>Within a procedure or method, include comments to explain the logic of each section of code. At a minimum, at least one comment describing logic should be included within any block of 20 lines.</p>
+<h3 id="control-blocks-should-be-commented">Control blocks should be commented</h3>
+<p>Every non-trivial control block (<code>if</code>, <code>for</code>, <code>while</code>, etc) should include a “why” comment: why is this block of code needed? What is the purpose of the condition in the case of a controlled block of code. </p>
+<details class="example" open="open">
+<summary>Example</summary>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">smallIndex</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">temp</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">   </span><span class="c1">// put largest remaining element in a[i]</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">   </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span><span class="c1">// find largest in a[i..n-1]</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="n">smallIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">smallIndex</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">            </span><span class="n">smallIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">         </span><span class="p">}</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">     </span><span class="p">}</span>
+</span></code></pre></div>
+</details>
+<h3 id="no-dead-code">No dead code</h3>
+<p>Remove any dead or commented-out code from your source files before submission. Commenting out code is useful in development, but do not submit commented-out code in your final product.</p>
+<h2 id="reuse-code-and-efficiency">Reuse code and efficiency</h2>
+<h3 id="use-library-functions-when-possible">Use library functions, when possible</h3>
+<p>C/C++ has quite a rich standard library. You should make use of its provided functions instead of re-implementing them (unless otherwise directed). Your re-implementation will almost always be less efficient (and is less likely to be correct).</p>
+<h3 id="avoid-redundant-computation">Avoid redundant computation</h3>
+<p>Use a helper variable or method to avoid computing values multiple times. If you find that a particular sequence of computations is being repeated more than twice, you should assign it to a variable and/or abstract it into a helper function which returns the desired value.</p>
+<h3 id="avoid-redundant-or-verbose-expressions">Avoid redundant or verbose expressions</h3>
+<p>Write expressions for <code>if</code> conditions, <code>while</code> loop guards, etc. in the most succinct and expressive way possible. Especially, consider whether a long expression involving multiple <code>||</code> or <code>&amp;&amp;</code> operators is easily readable and whether it could be written with fewer or simpler sub-expressions.</p>
+<h2 id="organization">Organization</h2>
+<h3 id="class-implementation-organization">Class implementation organization</h3>
+<p>Classes should be organized internally in the order:</p>
+<ol>
+<li>Import statements,</li>
+<li>Fields,</li>
+<li>Constructors, and</li>
+<li>Methods</li>
+</ol>
+<h3 id="decompose-logic-into-unique-specific-tasks">Decompose logic into unique, specific tasks</h3>
+<p>Methods and classes should perform one specific and unique task. This is known as the <em>principle of separation of concerns</em>: each class and method should be responsible for one thing and one thing only. Your program should be composed of a group of such classes which cooperate to achieve a goal.</p>
+<p>Put another way: avoid creating a single method or class that "does too much," meaning a method or class that serves multiple disjoint purposes or is responsible for too much. Such implementations are often unwieldy and difficult to extend or debug. </p>
+<h3 id="class-extension-should-always-represent-is-a-relationships">Class extension should always represent "is-a" relationships</h3>
+<p>When creating a subclass, make sure that the subtype Foo "is-a" version or variant of supertype Bar. </p>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>If the relationship is more appropriately described by a "has-a" relationship, then consider making Bar a field of Foo instead.</p>
+</details>
+<h2 id="more-examples-with-annotations">More Examples, with Annotations</h2>
+<h3 id="example-header">Example: header</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">fibonacci.c header</label><label for="__tabbed_1_2">Annotated</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">/** ***************************************************************************</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="cm"> * @remark computation and timing of elements of the Fibonnaci sequence       *</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="cm"> *  using the basic recurisve formula for the sequence                        *</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="cm"> *  with and without dynamic prog.                                            *</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="cm"> * @author Henry M. Walker                                                    *</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="cm"> * @file  fibonacci.c                                                         *</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="cm"> * @date  August 14, 2022                                                     *</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="cm"> * @remark References                                                         *</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="cm"> * @remark Dynamic Programming:  Anany Levitin, &quot;The Design and               *</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="cm"> *         and Analysis of Algorithms&quot;, Second Edition,                       *</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="cm"> *         Chapter 8:  Dynamic Programming                                    *</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="cm"> * @remark Dynamic Programming:  Anany Levitin, &quot;The Design and               *</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="cm"> *         and Analysis of Algorithms&quot;, Second Edition,                       *</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="cm"> *         Section 2.5:  Example: Computing the nth Fibonacci Number          *</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="cm"> * @remark People participating with Problem/Progra Discussions:              *</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="cm"> *         None                                                               *</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22"></a>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23"></a>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">     // for time</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cm">/** (1) ***********************************************************************</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="cm"> * @remark (2) computation and timing of elements of the Fibonnaci sequence   *</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="cm"> *  using the basic recurisve formula for the sequence                        *</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="cm"> *  with and without dynamic prog.                                            *</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="cm"> * (4) @author  Henry M. Walker                                               *</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="cm"> * @file  fibonacci.c                                                         *</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="cm"> * @date  August 14, 2022                                                     *</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="cm"> * @remark (3) References                                                     *</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="cm"> * @remark Dynamic Programming:  Anany Levitin, &quot;The Design and               *</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="cm"> *         and Analysis of Algorithms&quot;, Second Edition,                       *</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="cm"> *         Chapter 8:  Dynamic Programming                                    *</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="cm"> * @remark Dynamic Programming:  Anany Levitin, &quot;The Design and               *</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="cm"> *         and Analysis of Algorithms&quot;, Second Edition,                       *</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="cm"> *         Section 2.5:  Example: Computing the nth Fibonacci Number          *</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="cm"> * @remark People participating with Problem/Progra Discussions:              *</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="cm"> *         None                                                               *</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="cm"> *                                                                            *</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;time.h&gt;</span><span class="c1">     // for time (5)</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li><code>/**</code> designates the beginning of an annotation for use in Doxygen. Whitespace is needed after the second asterisk. If a line of astericks is desired at the start of a comment block, leave 1 space after the second asterisk before completing the line. Doxygen does not copy entire lines of asterisks (e.g., at the beginning or end of an annotation.) However, Doxygen does include individual asterisks within a line of text.</li>
+<li>The initial <code>@remark</code> tag identifies the purpose of program</li>
+<li>The <code>@remark</code> tag tells Doxygen that a comment follows.<ul>
+<li>The comment continues until a blank line or the next tag</li>
+<li>If two or more <code>@remark</code> tags, commentary for each tag starts on a new line.</li>
+</ul>
+</li>
+<li>The author, file, and date tags tell Doxygen to use specified labels and formatting</li>
+<li>Comment for <code>time.h</code> indicates the function motivating including this library</li>
+</ol>
+</div>
+</div>
+</div>
+<h3 id="example-function">Example: function</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">fibSeq1()</label><label for="__tabbed_2_2">Annotated</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span>
+<span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span>
+<span class="normal"><a href="#__codelineno-8-38">38</a></span>
+<span class="normal"><a href="#__codelineno-8-39">39</a></span>
+<span class="normal"><a href="#__codelineno-8-40">40</a></span>
+<span class="normal"><a href="#__codelineno-8-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26"></a><span class="cm">/** ***************************************************************************</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="cm"> * compute the nth fibonacci number directly,                                 *</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="cm"> * using the recursive definition of the sequence                             *</span>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="cm"> * @param  n:  the nth Fibonacci number to be computed                        *</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30"></a><span class="cm"> *              (starting the sequence at index 0)                            *</span>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="cm"> * @pre   0 &lt;= n                                                              *</span>
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32"></a><span class="cm"> * @returns  the nth Fibonacci number                                         *</span>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fibSeq1</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38"></a><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-39"><a id="__codelineno-8-39" name="__codelineno-8-39"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="mi">-2</span><span class="p">);</span>
+</span><span id="__span-8-40"><a id="__codelineno-8-40" name="__codelineno-8-40"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-41"><a id="__codelineno-8-41" name="__codelineno-8-41"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="cm">/** **********************************************************************(1)**</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="cm"> * (2) compute the nth fibonacci number directly,                             *</span>
+</span><span id="__span-9-28"><a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="cm"> * using the recursive definition of the sequence                             *</span>
+</span><span id="__span-9-29"><a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="cm"> * @param  n:  the nth Fibonacci number to be computed                        *</span>
+</span><span id="__span-9-30"><a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="cm"> *              (starting the sequence at index 0)                            *</span>
+</span><span id="__span-9-31"><a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="cm"> * @pre   0 &lt;= n                                                              *</span>
+</span><span id="__span-9-32"><a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="cm"> * @returns  the nth Fibonacci number                                         *</span>
+</span><span id="__span-9-33"><a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-9-34"><a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="kt">int</span><span class="w"> </span><span class="nf">fibSeq1</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-35"><a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-36"><a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-9-37"><a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="c1">// (3)</span>
+</span><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="mi">-2</span><span class="p">);</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>The block for a function can combine two forms: use a rectangle of asterisks, in the style of a text box; leave a space after the second asterisk of the opening line, as required by Doxygen.</li>
+<li>This function header identifies <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 7h4v10h-2V9h-2V7m2-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8Z"/></svg></span> purpose of function, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2v2h4v2H9v-4a2 2 0 0 1 2-2h2V9H9V7m3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8Z"/></svg></span> clarification of parameter <code>n</code> with a <code>@param</code> tag, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 15a2 2 0 0 1-2 2H9v-2h4v-2h-2v-2h2V9H9V7h4a2 2 0 0 1 2 2v1.5a1.5 1.5 0 0 1-1.5 1.5 1.5 1.5 0 0 1 1.5 1.5V15M12 2a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8Z"/></svg></span> clarification of pre-condition for <code>n</code> with a <code>@pre</code> tag, <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 7h2v4h2V7h2v10h-2v-4H9V7m3-5a10 10 0 0 1 10 10 10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8Z"/></svg></span> identification of value returned with a <code>@returns</code> tag</li>
+<li>Although the <code>if</code> and <code>else</code> control only one statement, braces are still used for consistency and to ease the addition of additional statements later.</li>
+</ol>
+</div>
+</div>
+</div>
+<h3 id="example-main">Example: <code>main()</code></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">main()</label><label for="__tabbed_3_2">Annotated</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-10-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-10-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-10-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-10-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-10-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-10-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-10-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-10-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-10-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-10-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-10-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-10-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-10-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-10-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-10-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-10-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-10-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-10-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-10-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-10-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-10-100">100</a></span>
+<span class="normal"><a href="#__codelineno-10-101">101</a></span>
+<span class="normal"><a href="#__codelineno-10-102">102</a></span>
+<span class="normal"><a href="#__codelineno-10-103">103</a></span>
+<span class="normal"><a href="#__codelineno-10-104">104</a></span>
+<span class="normal"><a href="#__codelineno-10-105">105</a></span>
+<span class="normal"><a href="#__codelineno-10-106">106</a></span>
+<span class="normal"><a href="#__codelineno-10-107">107</a></span>
+<span class="normal"><a href="#__codelineno-10-108">108</a></span>
+<span class="normal"><a href="#__codelineno-10-109">109</a></span>
+<span class="normal"><a href="#__codelineno-10-110">110</a></span>
+<span class="normal"><a href="#__codelineno-10-111">111</a></span>
+<span class="normal"><a href="#__codelineno-10-112">112</a></span>
+<span class="normal"><a href="#__codelineno-10-113">113</a></span>
+<span class="normal"><a href="#__codelineno-10-114">114</a></span>
+<span class="normal"><a href="#__codelineno-10-115">115</a></span>
+<span class="normal"><a href="#__codelineno-10-116">116</a></span>
+<span class="normal"><a href="#__codelineno-10-117">117</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-79"><a id="__codelineno-10-79" name="__codelineno-10-79"></a><span class="cm">/** ***************************************************************************</span>
+</span><span id="__span-10-80"><a id="__codelineno-10-80" name="__codelineno-10-80"></a><span class="cm"> * main procedure controls computation, timing, and printing                  *</span>
+</span><span id="__span-10-81"><a id="__codelineno-10-81" name="__codelineno-10-81"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-10-82"><a id="__codelineno-10-82" name="__codelineno-10-82"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-83"><a id="__codelineno-10-83" name="__codelineno-10-83"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">reps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w">  </span><span class="c1">// number of times call repeated to help timings</span>
+</span><span id="__span-10-84"><a id="__codelineno-10-84" name="__codelineno-10-84"></a>
+</span><span id="__span-10-85"><a id="__codelineno-10-85" name="__codelineno-10-85"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;timing of two functions to compute the nth Fib number</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-10-86"><a id="__codelineno-10-86" name="__codelineno-10-86"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;    (each function call repeated %d times)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reps</span><span class="p">);</span>
+</span><span id="__span-10-87"><a id="__codelineno-10-87" name="__codelineno-10-87"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;               Approach 1          Approach 2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-10-88"><a id="__codelineno-10-88" name="__codelineno-10-88"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;     n      Fib[n]     time    Fib[n]     time</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-10-89"><a id="__codelineno-10-89" name="__codelineno-10-89"></a>
+</span><span id="__span-10-90"><a id="__codelineno-10-90" name="__codelineno-10-90"></a><span class="w">  </span><span class="c1">// variables used for loops and timing</span>
+</span><span id="__span-10-91"><a id="__codelineno-10-91" name="__codelineno-10-91"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-10-92"><a id="__codelineno-10-92" name="__codelineno-10-92"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+</span><span id="__span-10-93"><a id="__codelineno-10-93" name="__codelineno-10-93"></a><span class="w">  </span><span class="kt">clock_t</span><span class="w"> </span><span class="n">start_time</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="p">;</span>
+</span><span id="__span-10-94"><a id="__codelineno-10-94" name="__codelineno-10-94"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">;</span>
+</span><span id="__span-10-95"><a id="__codelineno-10-95" name="__codelineno-10-95"></a>
+</span><span id="__span-10-96"><a id="__codelineno-10-96" name="__codelineno-10-96"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">45</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-97"><a id="__codelineno-10-97" name="__codelineno-10-97"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%6d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-10-98"><a id="__codelineno-10-98" name="__codelineno-10-98"></a>
+</span><span id="__span-10-99"><a id="__codelineno-10-99" name="__codelineno-10-99"></a><span class="w">    </span><span class="c1">// time first approach</span>
+</span><span id="__span-10-100"><a id="__codelineno-10-100" name="__codelineno-10-100"></a><span class="w">    </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-10-101"><a id="__codelineno-10-101" name="__codelineno-10-101"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reps</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-102"><a id="__codelineno-10-102" name="__codelineno-10-102"></a><span class="w">      </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-10-103"><a id="__codelineno-10-103" name="__codelineno-10-103"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-104"><a id="__codelineno-10-104" name="__codelineno-10-104"></a><span class="w">    </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="p">();</span>
+</span><span id="__span-10-105"><a id="__codelineno-10-105" name="__codelineno-10-105"></a><span class="w">    </span><span class="n">elapsed_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+</span><span id="__span-10-106"><a id="__codelineno-10-106" name="__codelineno-10-106"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%11d   %6.1lf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">);</span>
+</span><span id="__span-10-107"><a id="__codelineno-10-107" name="__codelineno-10-107"></a>
+</span><span id="__span-10-108"><a id="__codelineno-10-108" name="__codelineno-10-108"></a><span class="w">    </span><span class="c1">// time second approach</span>
+</span><span id="__span-10-109"><a id="__codelineno-10-109" name="__codelineno-10-109"></a><span class="w">    </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-10-110"><a id="__codelineno-10-110" name="__codelineno-10-110"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reps</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-111"><a id="__codelineno-10-111" name="__codelineno-10-111"></a><span class="w">      </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibSeq2</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-10-112"><a id="__codelineno-10-112" name="__codelineno-10-112"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-113"><a id="__codelineno-10-113" name="__codelineno-10-113"></a><span class="w">    </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="p">();</span>
+</span><span id="__span-10-114"><a id="__codelineno-10-114" name="__codelineno-10-114"></a><span class="w">    </span><span class="n">elapsed_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+</span><span id="__span-10-115"><a id="__codelineno-10-115" name="__codelineno-10-115"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%11d   %6.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">);</span>
+</span><span id="__span-10-116"><a id="__codelineno-10-116" name="__codelineno-10-116"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-117"><a id="__codelineno-10-117" name="__codelineno-10-117"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="language-cpp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-11-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-11-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-11-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-11-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-11-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-11-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-11-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-11-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-11-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-11-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-11-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-11-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-11-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-11-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-11-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-11-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-11-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-11-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-11-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-11-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-11-100">100</a></span>
+<span class="normal"><a href="#__codelineno-11-101">101</a></span>
+<span class="normal"><a href="#__codelineno-11-102">102</a></span>
+<span class="normal"><a href="#__codelineno-11-103">103</a></span>
+<span class="normal"><a href="#__codelineno-11-104">104</a></span>
+<span class="normal"><a href="#__codelineno-11-105">105</a></span>
+<span class="normal"><a href="#__codelineno-11-106">106</a></span>
+<span class="normal"><a href="#__codelineno-11-107">107</a></span>
+<span class="normal"><a href="#__codelineno-11-108">108</a></span>
+<span class="normal"><a href="#__codelineno-11-109">109</a></span>
+<span class="normal"><a href="#__codelineno-11-110">110</a></span>
+<span class="normal"><a href="#__codelineno-11-111">111</a></span>
+<span class="normal"><a href="#__codelineno-11-112">112</a></span>
+<span class="normal"><a href="#__codelineno-11-113">113</a></span>
+<span class="normal"><a href="#__codelineno-11-114">114</a></span>
+<span class="normal"><a href="#__codelineno-11-115">115</a></span>
+<span class="normal"><a href="#__codelineno-11-116">116</a></span>
+<span class="normal"><a href="#__codelineno-11-117">117</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-79"><a id="__codelineno-11-79" name="__codelineno-11-79"></a><span class="cm">/** ***************************************************************************</span>
+</span><span id="__span-11-80"><a id="__codelineno-11-80" name="__codelineno-11-80"></a><span class="cm"> * (1) main procedure controls computation, timing, and printing              *</span>
+</span><span id="__span-11-81"><a id="__codelineno-11-81" name="__codelineno-11-81"></a><span class="cm"> *****************************************************************************/</span>
+</span><span id="__span-11-82"><a id="__codelineno-11-82" name="__codelineno-11-82"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-83"><a id="__codelineno-11-83" name="__codelineno-11-83"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">reps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w">  </span><span class="c1">// number of times call repeated to help timings (2)</span>
+</span><span id="__span-11-84"><a id="__codelineno-11-84" name="__codelineno-11-84"></a>
+</span><span id="__span-11-85"><a id="__codelineno-11-85" name="__codelineno-11-85"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;timing of two functions to compute the nth Fib number</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-11-86"><a id="__codelineno-11-86" name="__codelineno-11-86"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;    (each function call repeated %d times)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reps</span><span class="p">);</span>
+</span><span id="__span-11-87"><a id="__codelineno-11-87" name="__codelineno-11-87"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;               Approach 1          Approach 2</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+</span><span id="__span-11-88"><a id="__codelineno-11-88" name="__codelineno-11-88"></a><span class="w">  </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;     n      Fib[n]     time    Fib[n]     time</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// (3)</span>
+</span><span id="__span-11-89"><a id="__codelineno-11-89" name="__codelineno-11-89"></a>
+</span><span id="__span-11-90"><a id="__codelineno-11-90" name="__codelineno-11-90"></a><span class="w">  </span><span class="c1">// variables used for loops and timing</span>
+</span><span id="__span-11-91"><a id="__codelineno-11-91" name="__codelineno-11-91"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+</span><span id="__span-11-92"><a id="__codelineno-11-92" name="__codelineno-11-92"></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+</span><span id="__span-11-93"><a id="__codelineno-11-93" name="__codelineno-11-93"></a><span class="w">  </span><span class="kt">clock_t</span><span class="w"> </span><span class="n">start_time</span><span class="p">,</span><span class="w"> </span><span class="n">end_time</span><span class="p">;</span>
+</span><span id="__span-11-94"><a id="__codelineno-11-94" name="__codelineno-11-94"></a><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">;</span>
+</span><span id="__span-11-95"><a id="__codelineno-11-95" name="__codelineno-11-95"></a>
+</span><span id="__span-11-96"><a id="__codelineno-11-96" name="__codelineno-11-96"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">45</span><span class="p">;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-97"><a id="__codelineno-11-97" name="__codelineno-11-97"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%6d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-11-98"><a id="__codelineno-11-98" name="__codelineno-11-98"></a>
+</span><span id="__span-11-99"><a id="__codelineno-11-99" name="__codelineno-11-99"></a><span class="w">    </span><span class="c1">// time first approach (4)</span>
+</span><span id="__span-11-100"><a id="__codelineno-11-100" name="__codelineno-11-100"></a><span class="w">    </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-11-101"><a id="__codelineno-11-101" name="__codelineno-11-101"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reps</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-102"><a id="__codelineno-11-102" name="__codelineno-11-102"></a><span class="w">      </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibSeq1</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-11-103"><a id="__codelineno-11-103" name="__codelineno-11-103"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-104"><a id="__codelineno-11-104" name="__codelineno-11-104"></a><span class="w">    </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="p">();</span>
+</span><span id="__span-11-105"><a id="__codelineno-11-105" name="__codelineno-11-105"></a><span class="w">    </span><span class="n">elapsed_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+</span><span id="__span-11-106"><a id="__codelineno-11-106" name="__codelineno-11-106"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%11d   %6.1lf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">);</span>
+</span><span id="__span-11-107"><a id="__codelineno-11-107" name="__codelineno-11-107"></a>
+</span><span id="__span-11-108"><a id="__codelineno-11-108" name="__codelineno-11-108"></a><span class="w">    </span><span class="c1">// time second approach (5)</span>
+</span><span id="__span-11-109"><a id="__codelineno-11-109" name="__codelineno-11-109"></a><span class="w">    </span><span class="n">start_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="w"> </span><span class="p">();</span>
+</span><span id="__span-11-110"><a id="__codelineno-11-110" name="__codelineno-11-110"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">reps</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-111"><a id="__codelineno-11-111" name="__codelineno-11-111"></a><span class="w">      </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fibSeq2</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span id="__span-11-112"><a id="__codelineno-11-112" name="__codelineno-11-112"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-113"><a id="__codelineno-11-113" name="__codelineno-11-113"></a><span class="w">    </span><span class="n">end_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock</span><span class="p">();</span>
+</span><span id="__span-11-114"><a id="__codelineno-11-114" name="__codelineno-11-114"></a><span class="w">    </span><span class="n">elapsed_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">end_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start_time</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="w"> </span><span class="n">CLOCKS_PER_SEC</span><span class="p">;</span>
+</span><span id="__span-11-115"><a id="__codelineno-11-115" name="__codelineno-11-115"></a><span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%11d   %6.1lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">elapsed_time</span><span class="p">);</span>
+</span><span id="__span-11-116"><a id="__codelineno-11-116" name="__codelineno-11-116"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-11-117"><a id="__codelineno-11-117" name="__codelineno-11-117"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Initial comment identifies primary scope of the main procedure</li>
+<li>Comment for reps briefly describes purpose of variable</li>
+<li>Text within printf clarifies purpose of output -- no need to say more</li>
+<li>Comments identify a section of code which handles timing</li>
+<li>This section section of code is separated by white space and a comment, to highlight the two different blocks of logic handling timing</li>
+</ol>
+</div>
+</div>
+</div>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>Although the C/C++ Programming Language allows programmers to utilize a wide range of formatting conventions, C/C++ and Java programming cultures largely have settled upon several widely-adopted conventions. Although some style elements vary somewhat from one organization to another, elements in this style guide are derived from these primary sources:</p>
+<ul>
+<li><a href="https://google.github.io/styleguide/cppguide.html">Google C++ Style Guide</a>, (accessed April 29, 2022)</li>
+<li><a href="https://google.github.io/styleguide/javaguide.html">Google Java Style Guide</a></li>
+<li><a href="https://www.oracle.com/technetwork/java/codeconvtoc-136057.html">Code Conventions for the Java Programming Language</a> (from Oracle, Revised April 20, 1999)</li>
+<li><a href="http://www.cis.upenn.edu/~cis120/">CIS 120</a> at the University of Pennsylvania.</li>
+<li>CSC 207 Java Style Guide by Peter-Michael Osera, Grinnell College.  </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "toc.integrate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
