@@ -31,9 +31,9 @@ Example configuration files to create Doxygen-generated documentation are includ
 
 | Sample Project | Using Doxygen | Using Doxygen + dot |
 |----------------|:------------------:|:------------------------:|
-| [`directory/`](https://github.com/SSU-CS/style-guide/tree/main/directory) | [:material-web:HTML](/directory-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/directory-docs/simple/latex/refman.pdf) | [:material-web:HTML](/directory-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](/directory-docs/graphics/latex/refman.pdf) |
-| [`fibonacci/`](https://github.com/SSU-CS/style-guide/tree/main/fibonacci) | [:material-web:HTML](/fibonacci-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/fibonacci-docs/simple/latex/refman.pdf) | [:material-web:HTML](/fibonacci-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](/fibonacci-docs/graphics/latex/refman.pdf) |
-| [`sort-comparisons/`](https://github.com/SSU-CS/style-guide/tree/main/sort-comparisons) | [:material-web:HTML](/sort-comparisons-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](/sort-comparisons-docs/simple/latex/refman.pdf) | [:material-web:HTML](/sort-comparisons-docs/graphics/html) &nbsp;  [:fontawesome-regular-file-pdf:PDF](/sort-comparisons-docs/graphics/latex/refman.pdf)  |
+| [`directory/`](https://github.com/SSU-CS/style-guide/tree/main/directory) | [:material-web:HTML](../directory-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](../directory-docs/simple/latex/refman.pdf) | [:material-web:HTML](../directory-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](../directory-docs/graphics/latex/refman.pdf) |
+| [`fibonacci/`](https://github.com/SSU-CS/style-guide/tree/main/fibonacci) | [:material-web:HTML](../fibonacci-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](../fibonacci-docs/simple/latex/refman.pdf) | [:material-web:HTML](../fibonacci-docs/graphics/html) &nbsp; [:fontawesome-regular-file-pdf:PDF](../fibonacci-docs/graphics/latex/refman.pdf) |
+| [`sort-comparisons/`](https://github.com/SSU-CS/style-guide/tree/main/sort-comparisons) | [:material-web:HTML](../sort-comparisons-docs/simple/html/) &nbsp; [:fontawesome-regular-file-pdf:PDF](../sort-comparisons-docs/simple/latex/refman.pdf) | [:material-web:HTML](../sort-comparisons-docs/graphics/html) &nbsp;  [:fontawesome-regular-file-pdf:PDF](../sort-comparisons-docs/graphics/latex/refman.pdf)  |
  
  
 
