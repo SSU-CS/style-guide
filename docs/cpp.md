@@ -78,7 +78,7 @@ Use "Egyptian"-style curly braces in your code in accordance with the C/C++ styl
     ```
 
 ### Use curly braces around all blocks
-Although C/C++ permits the elision of curly braces in cases where the body if-statement or loop consists of a single statement, we require that every block (no matter the number of statements) be enclosed inside curly braces on a new line. 
+Although C/C++ permits the omission of curly braces in cases where the body if-statement or loop consists of a single statement, we require that every block (no matter the number of statements) be enclosed inside curly braces on a new line.
 
 ???+ example
         
