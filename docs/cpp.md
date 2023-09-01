@@ -72,7 +72,8 @@ Use "Egyptian"-style curly braces in your code in accordance with the C/C++ styl
     /* Egyptian braces: opening brace on same line, closing brace on own line */
     if (a == b) {
        cout << "these are Egyptian braces";
-    } else {
+    }
+    else {
        cout << "hello, world!";
     }
     ```
