@@ -109,7 +109,20 @@ There should be no more than one statement (declaration, assignment, or function
 Within a block of code, use vertical whitespace (blank lines) to separate groups of statements. This makes code more readable and clarifies which statements are logically related. Note that if you have to resort to this rule, you should consider breaking your code up into multiple functions instead.
 
 ### Use spaces around operators
-Every C/C++ operator should have spaces around it (except the dot operator, e.g. method calls `c.foo()`). Use parentheses to communicate precedence. For example, `5 - (x + 4) * 8`
+Every C/C++ operator should have spaces around it. Use parentheses to communicate precedence. For example, `5 - (x + 4) * 8`
+Exceptions to this rule include:
+
+ - the dot operator (`c.foo()`)
+
+ - the arrow operator (`c->foo()`)
+
+ - the scope resolution operator (`::`)
+
+ - pre-/post-increment/decrement operators (`--`, `++`)
+
+ - the logical not operator (`!`)
+
+ - the bitwise not operator (`~`)
 
 ### Printing standards
 These additional requirements are only relevant when printing code on paper.
